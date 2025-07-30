@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Nutrição Completo | Plataforma Profissional para Nutricionistas e Pacientes</title>
+    <meta name="description" content="Sistema completo e funcional para nutricionistas e pacientes. Gerencie consultas, crie dietas personalizadas e acompanhe o progresso com nossa plataforma profissional.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" re                <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px;">
+    <style>
+        /* Estilos                         <div style="font-size: 2em;">🛡️</div>
+                        <strong>Totalmente seguro</strong>S */
+        :root {
+            --primary-color: #00d4aa; /* Verde água moderno */
+            --primary-dark: #00b894; /* Verde água mais escuro */
+            --secondary-color: #f8fffe; /* Branco levemente esverdeado */
+            --text-color: #2d3436; /* Cinza escuro moderno */
+            --light-gray: #ddd6fe; /* Lilás muito claro */
+            --white: #ffffff;
+            --dark-blue: #6c5ce7; /* Roxo moderno */
+            --accent-color: #fd79a8; /* Rosa coral */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--white) 0%, #f0fffe 100%);
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "🥗 🍎 🥑 🥕 🥒 🍊 🫐";
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5em;
+            opacity: 0.2;
+            letter-spacing: 30px;
+            z-index: 0;
+        }
+
+        header::after {
+            content: "🥬 🍅 🥦 🌶️ 🥝 🍋 🥭";
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5em;
+            opacity: 0.2;
+            letter-spacing: 30px;
+            z-index: 0;
+        }
+
+        header .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            font-size: 2.8em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            color: var(--text-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-top: 30px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .section:nth-child(even) {
+            background-color: var(--light-gray);
+        }
+
+        .section h2 {
+            font-size: 2.2em;
+            color: var(--dark-blue);
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .feature-item {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.15);
+        }
+
+        .feature-item h3 {
+            color: var(--primary-color);
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-item h3::before {
+            font-size: 1.3em;
+        }
+
+        /* Ícones específicos para cada seção */
+        .gestao-icon::before {
+            content: "📊";
+            color: var(--primary-color);
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+
+        .atendimento-icon::before {
+            content: "🥗";
+            color: var(--primary-color);
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+
+        .suporte-icon::before {
+            content: "👥";
+            color: var(--primary-color);
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+
+        .ferramentas-icon::before {
+            content: "📱";
+            color: var(--primary-color);
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+
+        .tecnologia-icon::before {
+            content: "⚡";
+            color: var(--primary-color);
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+
+        /* Seção de alimentos decorativa */
+        .food-decoration {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .food-decoration::before {
+            content: "🥑🍎🥕🥒🍊🫐🥬🍅🥦🌶️";
+            position: absolute;
+            top: -20px;
+            left: -50px;
+            font-size: 2em;
+            opacity: 0.1;
+            transform: rotate(-15deg);
+            letter-spacing: 20px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .food-decoration::after {
+            content: "🥝🍋🥭🍇🍓🥥🍑🍈🍌🥜";
+            position: absolute;
+            bottom: -20px;
+            right: -50px;
+            font-size: 2em;
+            opacity: 0.1;
+            transform: rotate(15deg);
+            letter-spacing: 20px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .feature-item ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* Estilos para destacar serviços vs explicações */
+        .service-name {
+            color: var(--dark-blue);
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        .service-description {
+            color: var(--text-color);
+            font-weight: 400;
+            margin-left: 5px;
+        }
+
+        .feature-item ul li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .feature-item ul li::before {
+            content: '🌟';
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .testimonial-card .author {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .contact-form button:hover {
+            background-color: var(--primary-dark);
+        }
+
+        footer {
+            background-color: var(--text-color);
+            color: var(--white);
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.9em;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            .section h2 {
+                font-size: 1.8em;
+            }
+
+            .features-grid, .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🥗 Sistema de Nutrição Completo 🧠</h1>
+            <p>🎯 Todas as Ferramentas Que Você Precisa Para Sua Prática Digital</p>
+            <a href="#cadastro" class="cta-button">💚 Quero Me Cadastrar!</a>
+        </div>
+    </header>
+
+    <div class="section food-decoration">
+        <div class="container">
+            <h2> Para Nutricionistas: Sistema Completo e Profissional 📊</h2>
+            <p>Todas as ferramentas que você precisa para digitalizar e otimizar sua prática clínica.</p>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h3 class="gestao-icon">Gestão de Pacientes</h3>
+                    <ul>
+                        <li><span class="service-name">Cadastro de Pacientes:</span><span class="service-description">Dados básicos e histórico de saúde</span></li>
+                        <li><span class="service-name">Agenda Simples:</span><span class="service-description">Controle de consultas e retornos</span></li>
+                        <li><span class="service-name">Prontuário Digital:</span><span class="service-description">Evolução do peso e anotações importantes</span></li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3 class="atendimento-icon">Criação de Dietas</h3>
+                    <ul>
+                        <li><span class="service-name">Planos Alimentares:</span><span class="service-description">Criação rápida de dietas personalizadas</span></li>
+                        <li><span class="service-name">Tabela Nutricional:</span><span class="service-description">Base de alimentos com cálculos automáticos</span></li>
+                        <li><span class="service-name">Templates Básicos:</span><span class="service-description">Modelos prontos para diferentes objetivos</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section food-decoration">
+        <div class="container">
+            <h2>🥗 Para Pacientes: Experiência Completa de Acompanhamento 🎯</h2>
+            <p>Todas as ferramentas para seguir seu plano alimentar e alcançar seus objetivos de saúde.</p>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h3 class="ferramentas-icon">App do Paciente</h3>
+                    <ul>
+                        <li><span class="service-name">Dieta no Celular:</span><span class="service-description">Acesse seu plano alimentar pelo celular</span></li>
+                        <li><span class="service-name">Registro de Peso:</span><span class="service-description">Controle simples da evolução do peso</span></li>
+                        <li><span class="service-name">Chat com Nutricionista:</span><span class="service-description">Comunicação direta via mensagens</span></li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3 class="suporte-icon">Recursos Básicos</h3>
+                    <ul>
+                        <li><span class="service-name">Lembretes:</span><span class="service-description">Notificações para refeições e água</span></li>
+                        <li><span class="service-name">Receitas Liberadas:</span><span class="service-description">Receitas aprovadas pelo seu nutricionista</span></li>
+                                                <li><span class="service-name">Histórico Simples:</span><span class="service-description">Acompanhe sua evolução ao longo do tempo</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="section">
+        <div class="container">
+            <h2>💬 O Que Nossos Usuários Dizem</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"O investimento vale muito a pena! Sistema incrível e completamente funcional. Consegui organizar meus pacientes e criar dietas profissionais rapidamente. Exatamente o que eu precisava!" 🥇</p>
+                    <div class="author">👩‍⚕️ Dra. Maria Santos, Nutricionista</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Melhor investimento que fiz! Estou usando há meses e é perfeito. O app funciona muito bem e consigo me comunicar facilmente com minha nutricionista. Recomendo!" 💪</p>
+                    <div class="author">😊 Pedro Silva, Paciente</div>
+                </div>
+            </div>
+        </div>
+    </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <h2>⚡ Diferenciais Tecnológicos</h2>
+            <p>Recursos únicos que fazem a diferença na sua prática profissional e no resultado dos seus pacientes.</p>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h3 class="tecnologia-icon">Tecnologia Avançada</h3>
+                    <ul>
+                        <li><span class="service-name">Acesso Offline:</span><span class="service-description">Sistema funciona sem internet, sincroniza automaticamente</span></li>
+                        <li><span class="service-name">Multiplataforma:</span><span class="service-description">Windows, Mac, tablet, celular - todos sincronizados</span></li>
+                        <li><span class="service-name">Backup Automático:</span><span class="service-description">Seus dados sempre seguros na nuvem</span></li>
+                        <li><span class="service-name">Integração com Wearables:</span><span class="service-description">Conecte com dispositivos de monitoramento</span></li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3 class="gestao-icon">Relatórios e Análises</h3>
+                    <ul>
+                        <li><span class="service-name">Relatórios Personalizados:</span><span class="service-description">Análises detalhadas de progresso e aderência</span></li>
+                        <li><span class="service-name">Gráficos Interativos:</span><span class="service-description">Visualização clara da evolução dos pacientes</span></li>
+                        <li><span class="service-name">Exportação Profissional:</span><span class="service-description">Relatórios em PDF para convênios e outros profissionais</span></li>
+                        <li><span class="service-name">Dashboard Executivo:</span><span class="service-description">Visão geral da sua clínica em tempo real</span></li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3 class="atendimento-icon">Recursos Especializados</h3>
+                    <ul>
+                        <li><span class="service-name">Prescrições Magistrais:</span><span class="service-description">Banco de formulações especializadas para casos específicos</span></li>
+                        <li><span class="service-name">Protocolos Clínicos:</span><span class="service-description">Estratégias para diabetes, hipertensão, obesidade e outras patologias</span></li>
+                        <li><span class="service-name">Cálculo de Suplementação:</span><span class="service-description">Dosagens precisas baseadas em literatura científica</span></li>
+                        <li><span class="service-name">Bioimpedância Integrada:</span><span class="service-description">Interpretação automática de exames de composição corporal</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <h2>💬 O Que Nossos Usuários Dizem</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"O sistema revolucionou minha prática clínica. Consegui organizar mais de 200 pacientes e aumentei minha receita em 40% no primeiro ano. A eficiência nos atendimentos é impressionante!" 🥇</p>
+                    <div class="author">👩‍⚕️ Dra. Maria Santos, Nutricionista Clínica - 8 anos de experiência</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"A facilidade de uso é impressionante. Meus pacientes adoram o app personalizado e a aderência ao tratamento melhorou drasticamente. Economizo 3 horas por dia!" 💪</p>
+                    <div class="author">�‍⚕️ Dr. Pedro Lima, Nutrólogo - Clínica com 500+ pacientes</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Finalmente um sistema que entende a rotina do nutricionista! Os relatórios automáticos e a teleconsulta integrada mudaram completamente meu atendimento." ⭐</p>
+                    <div class="author">�‍⚕️ Dra. Ana Costa, Nutricionista Esportiva - Especialista em alta performance</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section food-decoration" style="background-color: var(--primary-color); color: var(--white);">
+        <div class="container">
+            <h2>🚀 Comece Agora com Nossa Solução Completa! 🌟</h2>
+            <p style="font-size: 1.2em; max-width: 800px; margin: 20px auto 30px auto;">
+                Escolha seu plano e cadastre-se para <strong>receber o acesso por email</strong> ao nosso sistema completo.
+            </p>
+            <div class="cta-benefits" style="margin: 30px auto; max-width: 600px;">
+                <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 2em;">✅</div>
+                        <strong>Sistema completo</strong>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2em;">⚡</div>
+                        <strong>Pronto para usar</strong>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2em;">👤</div>
+                        <strong>Feito para você</strong>
+                    </div>
+                </div>
+            </div>
+            <a href="#cadastro" class="cta-button" style="background-color: var(--dark-blue); color: var(--white); font-size: 1.1em; padding: 18px 35px;">
+                 Quero Me Cadastrar Agora!
+            </a>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.9;">
+                ✅ Planos mensais • ✅ Suporte completo • ✅ Resultados garantidos
+            </p>
+        </div>
+    </div>
+
+    <div class="section" id="cadastro" style="background-color: var(--white);">
+        <div class="container">
+            <h2>📝 Cadastre-se e Receba seu Acesso</h2>
+            <p>Preencha os dados abaixo e receba o link de acesso ao sistema diretamente no seu email.</p>
+            <div class="contact-form">
+                <form id="cadastroForm" action="#" method="POST">
+                    <label for="nome">Nome Completo *</label>
+                    <input type="text" id="nome" name="nome" required>
+
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <button type="submit">🚀 Cadastrar e Receber Acesso por Email</button>
+                </form>
+                
+                <div id="mensagemSucesso" style="display: none; background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-top: 20px; text-align: center;">
+                    <strong>✅ Cadastro realizado com sucesso!</strong><br>
+                    Você receberá o link de acesso ao sistema no email informado em até 10 dias.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sistema de Nutrição Completo. Todos os direitos reservados.</p>
+            <p>Desenvolvido com 💚 em Sabará, MG.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scripts para funcionalidades futuras
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll para links internos
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Formulário de cadastro
+            const cadastroForm = document.getElementById('cadastroForm');
+            const mensagemSucesso = document.getElementById('mensagemSucesso');
+
+            cadastroForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Simula processamento do formulário
+                const botao = cadastroForm.querySelector('button[type="submit"]');
+                botao.textContent = '⏳ Processando...';
+                botao.disabled = true;
+
+                // Simula delay de processamento
+                setTimeout(function() {
+                    // Esconde o formulário e mostra mensagem de sucesso
+                    cadastroForm.style.display = 'none';
+                    mensagemSucesso.style.display = 'block';
+                    
+                    // Scroll suave para a mensagem de sucesso
+                    mensagemSucesso.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
